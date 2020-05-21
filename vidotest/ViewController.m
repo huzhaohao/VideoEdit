@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "ZYSpliceVideoEditor.h"
-
+#import "MixmusicViewController.h"
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 #define kScreenH [UIScreen mainScreen].bounds.size.height
 
@@ -30,6 +30,10 @@
     self.view.backgroundColor = UIColor.cyanColor;
     editor = [[ZYSpliceVideoEditor alloc] init];
     [self initAssets];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.player pause];
 }
 
 - (void)initAssets{
@@ -93,9 +97,8 @@
       CMTime start =  kCMTimeZero;
       CMTime duration = editor.compostion.duration;
       CMTimeRange range = CMTimeRangeMake(start, duration);
-      AVPlayerItem *playItem = [AVPlayerItem playerItemWithAsset:editor.compostion];
-      playItem.videoComposition = editor.videoComposition;
-    
+//      AVPlayerItem *playItem = [AVPlayerItem playerItemWithAsset:editor.compostion];
+//      playItem.videoComposition = editor.videoComposition;
       // 配置导出
       AVAssetExportSession* _assetExport = [[AVAssetExportSession alloc] initWithAsset:editor.compostion presetName:AVAssetExportPresetHighestQuality];
     // 导出视频的临时保存路径
@@ -114,7 +117,7 @@
        ^(void ) {
            switch ([_assetExport status]) {
                case AVAssetExportSessionStatusFailed:
-                   
+        
                    NSLog(@"Export failed: %@", [[_assetExport error] localizedDescription]);
                    break;
                case AVAssetExportSessionStatusCancelled:
@@ -177,7 +180,10 @@
   return[[vv_dateFormatter_vv stringFromDate:[NSDate date]]stringByAppendingString:@".MOV"];
 }
 - (IBAction)didclIkcEC:(id)sender {
-    [self composeVideo];
+//    [self composeVideo];
+    MixmusicViewController *vc = [MixmusicViewController new];
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 @end

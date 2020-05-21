@@ -9,14 +9,14 @@
 #import "MixmusicViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
+#import "ZYMixAudioEditor.h"
 
-#define kScreenW [UIScreen mainScreen].bounds.size.width
-#define kScreenH [UIScreen mainScreen].bounds.size.height
 #define kMusicKey @"MusicKey"
 
 @interface MixmusicViewController ()<MPMediaPickerControllerDelegate>
 {
     MPMediaPickerController *mpc;
+    ZYMixAudioEditor *editor;
 }
 @property (weak, nonatomic) IBOutlet UIButton *seleltBtn;
 
@@ -39,6 +39,11 @@
     self.seleltBtn.layer.borderWidth = 1;
     self.seleltBtn.layer.cornerRadius = 6;
 
+    NSString *name = [NSString stringWithFormat:@"test1"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"MP4"];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    self.asset = [AVURLAsset assetWithURL:url];
+    
     //创建播放器控制器
     mpc  = [[MPMediaPickerController alloc] initWithMediaTypes:MPMediaTypeMusic];
     //设置代理
@@ -49,8 +54,8 @@
     _AAplayer = [[AVPlayer alloc] initWithPlayerItem:playItem];
     _AAplayerLayer = [[AVPlayerLayer alloc] init];
     _AAplayerLayer.player = _AAplayer;
-    _AAplayerLayer.frame = CGRectMake(0,40,kScreenW, kScreenH -220);
-    _AAplayerLayer.position = self.view.center;
+    _AAplayerLayer.frame = CGRectMake(0,60,kScreenW, kScreenH -260);
+//    _AAplayerLayer.position = self.view.center;
     [self.view.layer addSublayer:_AAplayerLayer];
     [_AAplayer play];
     
@@ -62,6 +67,8 @@
     
     [_slider0 addTarget:self action:@selector(didSliderChange) forControlEvents:UIControlEventValueChanged];
     [_slider1 addTarget:self action:@selector(didSliderChange) forControlEvents:UIControlEventValueChanged];
+    
+     editor = [[ZYMixAudioEditor alloc] init];
 }
 
 - (void)didSliderChange{
@@ -102,40 +109,17 @@
    if (assetURL) {
        self.auAsset = [AVURLAsset assetWithURL:assetURL];
    } else {
-//       [SVProgressHUD showInfoWithStatus:@"音乐数字版权加密保护请选择本地未进行过数字版权加密的音乐也就是您自己手动导入的音乐."];
    }
     [self initAssets];
 }
 - (void)initAssets{
-       AVAsset *asset = self.asset;
-       AVAsset *audioAsset = self.auAsset;
-       BOOL needOriginalVoice = NO;
-       NSArray *tempArray =[asset tracksWithMediaType:AVMediaTypeAudio] ;
-       if (tempArray.count > 0) {
-          needOriginalVoice = YES;
-        }
-       //    分离素材
-       AVAssetTrack *videoAssetTrack = [[asset tracksWithMediaType:AVMediaTypeVideo]objectAtIndex:0];//视频素材
-       AVAssetTrack *audioAssetTrack = [[audioAsset tracksWithMediaType:AVMediaTypeAudio]objectAtIndex:0];//音频素材
-       
-       //    编辑视频环境
-       AVMutableComposition *composition = [[AVMutableComposition alloc]init];
-        
-       AVMutableCompositionTrack *videoCompositionTrack = [composition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
-       [videoCompositionTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAssetTrack.timeRange.duration) ofTrack:videoAssetTrack atTime:kCMTimeZero error:nil];
-       
-       AVMutableCompositionTrack *audioCompositionTrack = [composition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
-       [audioCompositionTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoCompositionTrack.timeRange.duration) ofTrack:audioAssetTrack atTime:kCMTimeZero error:nil];
-//       BOOL needOriginalVoice = YES;
-       AVMutableCompositionTrack *originalAudioCompositionTrack = nil;
-      
-          if (needOriginalVoice) {
-              AVAssetTrack *originalAudioAssetTrack = [[asset tracksWithMediaType:AVMediaTypeAudio]objectAtIndex:0];
-              originalAudioCompositionTrack = [composition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
-              [originalAudioCompositionTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAssetTrack.timeRange.duration) ofTrack:originalAudioAssetTrack atTime:kCMTimeZero error:nil];
-          }
-    AVPlayerItem *playItem = [AVPlayerItem playerItemWithAsset:composition];
-    playItem.audioMix =  [self buildAudioMixWithVideoTrack:originalAudioCompositionTrack VideoVolume:self.slider0.value BGMTrack:audioCompositionTrack BGMVolume:self.slider1.value controlVolumeRange:kCMTimeZero];
+
+    editor.asset = self.asset;
+    editor.auAsset = self.auAsset;
+    [editor buildAudioWithVideoVolume:self.slider0.value BGMVolume:self.slider1.value];
+    
+    AVPlayerItem *playItem = [AVPlayerItem playerItemWithAsset:editor.compostion];
+    playItem.audioMix =  editor.audioMix;
     
     [_AAplayer pause];
     [_AAplayerLayer removeFromSuperlayer];
@@ -143,8 +127,8 @@
     _AAplayer = [[AVPlayer alloc] initWithPlayerItem:playItem];
     _AAplayerLayer = [[AVPlayerLayer alloc] init];
     _AAplayerLayer.player = _AAplayer;
-    _AAplayerLayer.frame = CGRectMake(0,40,kScreenW, kScreenH -220);
-    _AAplayerLayer.position = self.view.center;
+    _AAplayerLayer.frame = CGRectMake(0,60,kScreenW, kScreenH -260);
+//    _AAplayerLayer.position = self.view.center;
     [self.view.layer addSublayer:_AAplayerLayer];
     [_AAplayer play];
 }
@@ -156,70 +140,38 @@
         return;
     }
     [_AAplayer pause];
-    //    素材
-    AVAsset *asset = self.asset;
-    AVAsset *audioAsset = self.auAsset;
-    BOOL needOriginalVoice = NO;
-    NSArray *tempArray =[asset tracksWithMediaType:AVMediaTypeAudio] ;
-    if (tempArray.count > 0) {
-        needOriginalVoice = YES;
-    }
-    //    分离素材
-    AVAssetTrack *videoAssetTrack = [[asset tracksWithMediaType:AVMediaTypeVideo]objectAtIndex:0];//视频素材
-    AVAssetTrack *audioAssetTrack = [[audioAsset tracksWithMediaType:AVMediaTypeAudio]objectAtIndex:0];//音频素材
-    
-    //    编辑视频环境
-    AVMutableComposition *composition = [[AVMutableComposition alloc]init];
-     
-    AVMutableCompositionTrack *videoCompositionTrack = [composition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
-    [videoCompositionTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAssetTrack.timeRange.duration) ofTrack:videoAssetTrack atTime:kCMTimeZero error:nil];
-    
-    AVMutableCompositionTrack *audioCompositionTrack = [composition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
-    [audioCompositionTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoCompositionTrack.timeRange.duration) ofTrack:audioAssetTrack atTime:kCMTimeZero error:nil];
-    
-    AVMutableCompositionTrack *originalAudioCompositionTrack = nil;
-       if (needOriginalVoice) {
-           AVAssetTrack *originalAudioAssetTrack = [[asset tracksWithMediaType:AVMediaTypeAudio]objectAtIndex:0];
-           originalAudioCompositionTrack = [composition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
-           [originalAudioCompositionTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAssetTrack.timeRange.duration) ofTrack:originalAudioAssetTrack atTime:kCMTimeZero error:nil];
-       }
+    editor.asset = self.asset;
+    editor.auAsset = self.auAsset;
+    [editor buildAudioWithVideoVolume:self.slider0.value BGMVolume:self.slider1.value];
     //    导出素材
-    AVAssetExportSession *exporter = [[AVAssetExportSession alloc]initWithAsset:composition presetName:AVAssetExportPresetMediumQuality];
-    
+    AVAssetExportSession *exporter = [[AVAssetExportSession alloc]initWithAsset:editor.compostion presetName:AVAssetExportPresetMediumQuality];
     //    音量控制
-    exporter.audioMix = [self buildAudioMixWithVideoTrack:originalAudioCompositionTrack VideoVolume:0.5 BGMTrack:audioCompositionTrack BGMVolume:1 controlVolumeRange:kCMTimeZero];
-        
+    exporter.audioMix = editor.audioMix;
     // 导出视频的临时保存路径
-        NSString *exportPath = [NSTemporaryDirectory() stringByAppendingPathComponent:[self getVideoNameBaseCurrentTime]];
-        unlink([exportPath UTF8String]);
-        NSURL *exportUrl = [NSURL fileURLWithPath:exportPath];
+    NSString *exportPath = [NSTemporaryDirectory() stringByAppendingPathComponent:[self getVideoNameBaseCurrentTime]];
+    unlink([exportPath UTF8String]);
+    NSURL *exportUrl = [NSURL fileURLWithPath:exportPath];
     //    设置输出路径
-        exporter.outputURL = exportUrl ;
-        exporter.outputFileType = AVFileTypeMPEG4;//指定输出格式
-        
+    exporter.outputURL = exportUrl ;
+    exporter.outputFileType = AVFileTypeMPEG4;//指定输出格式
    // 导出视频
      [exporter exportAsynchronouslyWithCompletionHandler:
          ^(void ) {
              switch ([exporter status]) {
                  case AVAssetExportSessionStatusFailed:
-                     
                      NSLog(@"Export failed: %@", [[exporter error] localizedDescription]);
                      break;
                  case AVAssetExportSessionStatusCancelled:
-                     
                      NSLog(@"Export canceled");
                      break;
                  default:
                      NSLog(@"NONE");
-                     
                      dispatch_async(dispatch_get_main_queue(), ^{
-                         
+                         [self saveVideo:exportPath];
                      });
-                    
-                     break;
+                 break;
              }
         }];
-
 }
 #pragma mark - 调节合成的音量
 - (AVAudioMix *)buildAudioMixWithVideoTrack:(AVCompositionTrack *)videoTrack VideoVolume:(float)videoVolume BGMTrack:(AVCompositionTrack *)BGMTrack BGMVolume:(float)BGMVolume controlVolumeRange:(CMTime)volumeRange {
@@ -247,46 +199,4 @@
     return audioMix;
 }
 
-//videoPath为视频下载到本地之后的本地路径
-- (void)saveVideo:(NSString *)videoPath{
-    if (videoPath) {
-        NSURL *url = [NSURL fileURLWithPath:videoPath];
-        BOOL compatible = UIVideoAtPathIsCompatibleWithSavedPhotosAlbum([url path]);
-        if (compatible) {
-            //保存相册核心代码
-            UISaveVideoAtPathToSavedPhotosAlbum([url path], self, @selector(savedPhotoImage:didFinishSavingWithError:contextInfo:), nil);
-        } else {
-
-        }
-    }
-}
-//保存视频完成之后的回调
-- (void)savedPhotoImage:(UIImage*)image didFinishSavingWithError: (NSError *)error contextInfo: (void *)contextInfo {
-    if (error) {
-         dispatch_async(dispatch_get_main_queue(), ^{
-         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"保存视频到相册失败。" message:nil preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-           }];
-            [alert addAction:action];
-            [self presentViewController:alert animated:YES completion:nil];
-        });
-        NSLog(@"保存视频失败%@", error.localizedDescription);
-    } else {
-         dispatch_async(dispatch_get_main_queue(), ^{
-         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"保存视频到相册成功。" message:nil preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-           }];
-            [alert addAction:action];
-            [self presentViewController:alert animated:YES completion:nil];
-        });
-        NSLog(@"保存视频成功");
-    }
-}
-
-#pragma mark ----生成视频名称---
-- (NSString*)getVideoNameBaseCurrentTime {
-   NSDateFormatter*vv_dateFormatter_vv = [[NSDateFormatter  alloc]init];
-   [vv_dateFormatter_vv setDateFormat:@"yyyyMMddHHmmss"];
-  return[[vv_dateFormatter_vv stringFromDate:[NSDate date]]stringByAppendingString:@".MOV"];
-}
 @end

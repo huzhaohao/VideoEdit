@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B103666F2476C18E0089B28C /* ZYMixAudioEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = B103666E2476C18E0089B28C /* ZYMixAudioEditor.m */; };
 		B1AB745A23C02E3300DD6F5B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AB745923C02E3300DD6F5B /* AppDelegate.m */; };
 		B1AB746023C02E3300DD6F5B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AB745F23C02E3300DD6F5B /* ViewController.m */; };
 		B1AB746323C02E3300DD6F5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1AB746123C02E3300DD6F5B /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 		B1AB747723C02E9400DD6F5B /* ZYSpliceVideoEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AB747623C02E9400DD6F5B /* ZYSpliceVideoEditor.m */; };
 		B1B30F97247687640063345A /* MixmusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B30F94247687640063345A /* MixmusicViewController.m */; };
 		B1B30F98247687650063345A /* MixmusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1B30F95247687640063345A /* MixmusicViewController.xib */; };
+		B1B30FA0247697C80063345A /* HZVideoBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B30F9F247697C80063345A /* HZVideoBaseController.m */; };
 		B1DF054923C4394E00A36C2A /* test1.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = B1AB747123C02E5700DD6F5B /* test1.MP4 */; };
 		B1DF054A23C4395200A36C2A /* test2.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = B1AB747423C02E5800DD6F5B /* test2.MP4 */; };
 		B1DF054B23C4395600A36C2A /* test3.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = B1AB747223C02E5700DD6F5B /* test3.MP4 */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B103666D2476C18E0089B28C /* ZYMixAudioEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYMixAudioEditor.h; sourceTree = "<group>"; };
+		B103666E2476C18E0089B28C /* ZYMixAudioEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYMixAudioEditor.m; sourceTree = "<group>"; };
 		B1AB745523C02E3300DD6F5B /* vidotest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vidotest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1AB745823C02E3300DD6F5B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B1AB745923C02E3300DD6F5B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -43,6 +47,8 @@
 		B1B30F95247687640063345A /* MixmusicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MixmusicViewController.xib; sourceTree = "<group>"; };
 		B1B30F96247687640063345A /* MixmusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixmusicViewController.h; sourceTree = "<group>"; };
 		B1B30F9D24768F030063345A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		B1B30F9E247697C80063345A /* HZVideoBaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HZVideoBaseController.h; sourceTree = "<group>"; };
+		B1B30F9F247697C80063345A /* HZVideoBaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HZVideoBaseController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,11 +93,15 @@
 		B1B30F9A24768D980063345A /* Function */ = {
 			isa = PBXGroup;
 			children = (
+				B1B30F9E247697C80063345A /* HZVideoBaseController.h */,
+				B1B30F9F247697C80063345A /* HZVideoBaseController.m */,
 				B1AB747523C02E9400DD6F5B /* ZYSpliceVideoEditor.h */,
 				B1AB747623C02E9400DD6F5B /* ZYSpliceVideoEditor.m */,
 				B1B30F96247687640063345A /* MixmusicViewController.h */,
 				B1B30F94247687640063345A /* MixmusicViewController.m */,
 				B1B30F95247687640063345A /* MixmusicViewController.xib */,
+				B103666D2476C18E0089B28C /* ZYMixAudioEditor.h */,
+				B103666E2476C18E0089B28C /* ZYMixAudioEditor.m */,
 			);
 			path = Function;
 			sourceTree = "<group>";
@@ -199,9 +209,11 @@
 			files = (
 				B1AB746023C02E3300DD6F5B /* ViewController.m in Sources */,
 				B1B30F97247687640063345A /* MixmusicViewController.m in Sources */,
+				B1B30FA0247697C80063345A /* HZVideoBaseController.m in Sources */,
 				B1AB745A23C02E3300DD6F5B /* AppDelegate.m in Sources */,
 				B1AB746B23C02E3400DD6F5B /* main.m in Sources */,
 				B1AB747723C02E9400DD6F5B /* ZYSpliceVideoEditor.m in Sources */,
+				B103666F2476C18E0089B28C /* ZYMixAudioEditor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

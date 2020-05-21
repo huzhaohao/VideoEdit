@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HZVideoBaseController.h"
 #import <AVFoundation/AVFoundation.h>
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MixmusicViewController : UIViewController
+@interface MixmusicViewController : HZVideoBaseController
 
 @property (nonatomic, strong) AVURLAsset *asset;
 @property (nonatomic, strong) AVURLAsset *auAsset;
