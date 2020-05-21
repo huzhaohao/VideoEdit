@@ -42,6 +42,7 @@
 		B1B30F94247687640063345A /* MixmusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixmusicViewController.m; sourceTree = "<group>"; };
 		B1B30F95247687640063345A /* MixmusicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MixmusicViewController.xib; sourceTree = "<group>"; };
 		B1B30F96247687640063345A /* MixmusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixmusicViewController.h; sourceTree = "<group>"; };
+		B1B30F9D24768F030063345A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +106,7 @@
 				B1AB746623C02E3400DD6F5B /* LaunchScreen.storyboard */,
 				B1AB746923C02E3400DD6F5B /* Info.plist */,
 				B1AB746A23C02E3400DD6F5B /* main.m */,
+				B1B30F9D24768F030063345A /* PrefixHeader.pch */,
 			);
 			name = main;
 			sourceTree = "<group>";
@@ -341,6 +343,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LV9M5P6469;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = vidotest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -359,6 +363,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LV9M5P6469;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = vidotest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
