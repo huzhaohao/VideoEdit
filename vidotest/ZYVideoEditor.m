@@ -54,18 +54,42 @@
        AVMutableCompositionTrack  *track = [muComposition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
         [comVideoTracks addObject:track];
     }
+    //添加音轨编辑轨道
+    NSMutableArray *comAudioTracks = [[NSMutableArray alloc] init];
+    for (int i=0; i < 2; i++) {
+       AVMutableCompositionTrack  *track = [muComposition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
+        [comAudioTracks addObject:track];
+    }
     NSMutableArray *passThroughTimeRanges = [[NSMutableArray alloc] init];
     NSMutableArray *transitionTimeRanges = [[NSMutableArray alloc] init];
     CMTime startTime = kCMTimeZero;
     for (int i = 0; i < _clips.count; i++) {
         AVAsset *asset = _clips[i];
+        //音轨
         AVAssetTrack *oriVideoTrack = [asset tracksWithMediaType:AVMediaTypeVideo][0];
+        AVAssetTrack *oriAudioTrack;
+        NSArray *array = [asset tracksWithMediaType:AVMediaTypeAudio];
+        if (array.count >0) {
+            oriAudioTrack = [asset tracksWithMediaType:AVMediaTypeAudio][0];
+        }
+       
         if (oriVideoTrack == nil) {
             return;
         }
         AVMutableCompositionTrack *comVideoTrack = comVideoTracks[i % 2];
-        CMTimeRange clipRange = CMTimeRangeMake(kCMTimeZero, CMTimeMake(5, 1));
+//        CMTimeRange clipRange = CMTimeRangeMake(kCMTimeZero, CMTimeMake(10, 1));
+        NSValue *tempvalue =_clipRanges[i];
+        CMTimeRange clipRange = [tempvalue CMTimeRangeValue];
         [comVideoTrack insertTimeRange:clipRange ofTrack:oriVideoTrack atTime:startTime error:nil];
+        
+        if (oriAudioTrack) {
+            AVMutableCompositionTrack *comAudioTrack = comAudioTracks[i % 2];
+            [comAudioTrack insertTimeRange:clipRange ofTrack:oriAudioTrack atTime:startTime error:nil];
+        } else {
+            AVMutableCompositionTrack *comAudioTrack = comAudioTracks[i % 2];
+            CMTimeRange emptyRange = CMTimeRangeMake(startTime, clipRange.duration);
+            [comAudioTrack insertEmptyTimeRange:emptyRange];
+        }
         CMTimeRange tempRange = CMTimeRangeMake(startTime, clipRange.duration);
         if (i > 0) {
             tempRange.start = CMTimeAdd(tempRange.start, _trasitionTime);
