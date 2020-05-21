@@ -1,0 +1,15 @@
+//
+//  PrefixHeader.pch
+//  vidotest
+//
+//  Created by huzhaohao on 2020/5/21.
+//  Copyright © 2020 huzhaohao. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define kScreenW [UIScreen mainScreen].bounds.size.width
+#define kScreenH [UIScreen mainScreen].bounds.size.height
+
+#endif /* PrefixHeader_pch */

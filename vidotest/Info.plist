@@ -28,16 +28,18 @@
 	<array>
 		<string>armv7</string>
 	</array>
-    <key>NSCameraUsageDescription</key>
-    <string>需要访问你的相机处理您现场拍摄的视频</string>
-    <key>NSLocationUsageDescription</key>
-    <string>app需要访问你的地理位置</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>需要访问你的麦克风</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>需要访问你的相册保存您处理过的视频</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>需要访问你的相册获取您需要处理的视频</string>
+	<key>NSCameraUsageDescription</key>
+	<string>需要访问你的相机处理您现场拍摄的视频</string>
+	<key>NSLocationUsageDescription</key>
+	<string>app需要访问你的地理位置</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>需要访问你的麦克风</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>需要访问你的相册保存您处理过的视频</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>需要访问你的相册获取您需要处理的视频</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>需要访问你的媒体库获取您需要处理的音频</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
