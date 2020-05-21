@@ -74,26 +74,50 @@
 		B1AB745723C02E3300DD6F5B /* vidotest */ = {
 			isa = PBXGroup;
 			children = (
+				B1B30F9B24768E0C0063345A /* main */,
+				B1B30F9A24768D980063345A /* Function */,
+				B1B30F9C24768E370063345A /* Resourse */,
+				B1AB745E23C02E3300DD6F5B /* ViewController.h */,
+				B1AB745F23C02E3300DD6F5B /* ViewController.m */,
+			);
+			path = vidotest;
+			sourceTree = "<group>";
+		};
+		B1B30F9A24768D980063345A /* Function */ = {
+			isa = PBXGroup;
+			children = (
+				B1AB747523C02E9400DD6F5B /* ZYSpliceVideoEditor.h */,
+				B1AB747623C02E9400DD6F5B /* ZYSpliceVideoEditor.m */,
 				B1B30F96247687640063345A /* MixmusicViewController.h */,
 				B1B30F94247687640063345A /* MixmusicViewController.m */,
 				B1B30F95247687640063345A /* MixmusicViewController.xib */,
-				B1AB747123C02E5700DD6F5B /* test1.MP4 */,
-				B1AB747423C02E5800DD6F5B /* test2.MP4 */,
-				B1AB747223C02E5700DD6F5B /* test3.MP4 */,
-				B1AB747323C02E5800DD6F5B /* test4.MP4 */,
+			);
+			path = Function;
+			sourceTree = "<group>";
+		};
+		B1B30F9B24768E0C0063345A /* main */ = {
+			isa = PBXGroup;
+			children = (
 				B1AB745823C02E3300DD6F5B /* AppDelegate.h */,
 				B1AB745923C02E3300DD6F5B /* AppDelegate.m */,
-				B1AB747523C02E9400DD6F5B /* ZYSpliceVideoEditor.h */,
-				B1AB747623C02E9400DD6F5B /* ZYSpliceVideoEditor.m */,
-				B1AB745E23C02E3300DD6F5B /* ViewController.h */,
-				B1AB745F23C02E3300DD6F5B /* ViewController.m */,
 				B1AB746123C02E3300DD6F5B /* Main.storyboard */,
 				B1AB746423C02E3400DD6F5B /* Assets.xcassets */,
 				B1AB746623C02E3400DD6F5B /* LaunchScreen.storyboard */,
 				B1AB746923C02E3400DD6F5B /* Info.plist */,
 				B1AB746A23C02E3400DD6F5B /* main.m */,
 			);
-			path = vidotest;
+			name = main;
+			sourceTree = "<group>";
+		};
+		B1B30F9C24768E370063345A /* Resourse */ = {
+			isa = PBXGroup;
+			children = (
+				B1AB747123C02E5700DD6F5B /* test1.MP4 */,
+				B1AB747423C02E5800DD6F5B /* test2.MP4 */,
+				B1AB747223C02E5700DD6F5B /* test3.MP4 */,
+				B1AB747323C02E5800DD6F5B /* test4.MP4 */,
+			);
+			path = Resourse;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
