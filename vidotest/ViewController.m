@@ -9,8 +9,8 @@
 #import "ViewController.h"
 #import "ZYSpliceVideoEditor.h"
 
-#define kWidth [UIScreen mainScreen].bounds.size.width
-#define kheight [UIScreen mainScreen].bounds.size.height
+#define kScreenW [UIScreen mainScreen].bounds.size.width
+#define kScreenH [UIScreen mainScreen].bounds.size.height
 
 @interface ViewController ()
 {

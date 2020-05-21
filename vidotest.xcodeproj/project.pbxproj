@@ -14,6 +14,8 @@
 		B1AB746823C02E3400DD6F5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1AB746623C02E3400DD6F5B /* LaunchScreen.storyboard */; };
 		B1AB746B23C02E3400DD6F5B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AB746A23C02E3400DD6F5B /* main.m */; };
 		B1AB747723C02E9400DD6F5B /* ZYSpliceVideoEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AB747623C02E9400DD6F5B /* ZYSpliceVideoEditor.m */; };
+		B1B30F97247687640063345A /* MixmusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B30F94247687640063345A /* MixmusicViewController.m */; };
+		B1B30F98247687650063345A /* MixmusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1B30F95247687640063345A /* MixmusicViewController.xib */; };
 		B1DF054923C4394E00A36C2A /* test1.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = B1AB747123C02E5700DD6F5B /* test1.MP4 */; };
 		B1DF054A23C4395200A36C2A /* test2.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = B1AB747423C02E5800DD6F5B /* test2.MP4 */; };
 		B1DF054B23C4395600A36C2A /* test3.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = B1AB747223C02E5700DD6F5B /* test3.MP4 */; };
@@ -37,6 +39,9 @@
 		B1AB747423C02E5800DD6F5B /* test2.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test2.MP4; sourceTree = "<group>"; };
 		B1AB747523C02E9400DD6F5B /* ZYSpliceVideoEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYSpliceVideoEditor.h; sourceTree = "<group>"; };
 		B1AB747623C02E9400DD6F5B /* ZYSpliceVideoEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYSpliceVideoEditor.m; sourceTree = "<group>"; };
+		B1B30F94247687640063345A /* MixmusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixmusicViewController.m; sourceTree = "<group>"; };
+		B1B30F95247687640063345A /* MixmusicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MixmusicViewController.xib; sourceTree = "<group>"; };
+		B1B30F96247687640063345A /* MixmusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixmusicViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +74,9 @@
 		B1AB745723C02E3300DD6F5B /* vidotest */ = {
 			isa = PBXGroup;
 			children = (
+				B1B30F96247687640063345A /* MixmusicViewController.h */,
+				B1B30F94247687640063345A /* MixmusicViewController.m */,
+				B1B30F95247687640063345A /* MixmusicViewController.xib */,
 				B1AB747123C02E5700DD6F5B /* test1.MP4 */,
 				B1AB747423C02E5800DD6F5B /* test2.MP4 */,
 				B1AB747223C02E5700DD6F5B /* test3.MP4 */,
@@ -146,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1DF054C23C4395900A36C2A /* test4.MP4 in Resources */,
+				B1B30F98247687650063345A /* MixmusicViewController.xib in Resources */,
 				B1AB746823C02E3400DD6F5B /* LaunchScreen.storyboard in Resources */,
 				B1DF054923C4394E00A36C2A /* test1.MP4 in Resources */,
 				B1AB746523C02E3400DD6F5B /* Assets.xcassets in Resources */,
@@ -163,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1AB746023C02E3300DD6F5B /* ViewController.m in Sources */,
+				B1B30F97247687640063345A /* MixmusicViewController.m in Sources */,
 				B1AB745A23C02E3300DD6F5B /* AppDelegate.m in Sources */,
 				B1AB746B23C02E3400DD6F5B /* main.m in Sources */,
 				B1AB747723C02E9400DD6F5B /* ZYSpliceVideoEditor.m in Sources */,
@@ -308,6 +318,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LV9M5P6469;
 				INFOPLIST_FILE = vidotest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -325,6 +336,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LV9M5P6469;
 				INFOPLIST_FILE = vidotest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
