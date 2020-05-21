@@ -7,14 +7,14 @@
 //
 
 #import "ViewController.h"
-#import "ZYVideoEditor.h"
+#import "ZYSpliceVideoEditor.h"
 
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kheight [UIScreen mainScreen].bounds.size.height
 
 @interface ViewController ()
 {
-    ZYVideoEditor *editor;
+    ZYSpliceVideoEditor *editor;
 }
 @property (nonatomic)AVPlayer *player;
 @property (nonatomic)AVPlayerLayer *playerLayer;
@@ -28,7 +28,7 @@
     [super viewDidLoad];
 
     self.view.backgroundColor = UIColor.cyanColor;
-    editor = [[ZYVideoEditor alloc] init];
+    editor = [[ZYSpliceVideoEditor alloc] init];
     [self initAssets];
 }
 
@@ -42,7 +42,7 @@
         AVAsset *asset = [AVAsset assetWithURL:url];
         [assets addObject:asset];
         //截取视频前5秒
-        CMTimeRange timeRange = CMTimeRangeMake(kCMTimeZero, CMTimeMake(5, 1));
+        CMTimeRange timeRange = CMTimeRangeMake(kCMTimeZero, asset.duration);
         [timeRanges addObject:[NSValue valueWithCMTimeRange:timeRange]];
     }
     editor.clips = assets;

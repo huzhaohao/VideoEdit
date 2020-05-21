@@ -1,19 +1,19 @@
 //
-//  ZYVideoEditor.m
+//  ZYSpliceVideoEditor.m
 //  vidotest
 //
 //  Created by huzhaohao on 2020/1/4.
 //  Copyright © 2020 huzhaohao. All rights reserved.
 //
 
-#import "ZYVideoEditor.h"
+#import "ZYSpliceVideoEditor.h"
 
-@interface ZYVideoEditor ()
+@interface ZYSpliceVideoEditor ()
 
 
 @end
 
-@implementation ZYVideoEditor
+@implementation ZYSpliceVideoEditor
 
 - (instancetype)init
 {

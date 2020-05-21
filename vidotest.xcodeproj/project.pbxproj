@@ -13,7 +13,7 @@
 		B1AB746523C02E3400DD6F5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1AB746423C02E3400DD6F5B /* Assets.xcassets */; };
 		B1AB746823C02E3400DD6F5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1AB746623C02E3400DD6F5B /* LaunchScreen.storyboard */; };
 		B1AB746B23C02E3400DD6F5B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AB746A23C02E3400DD6F5B /* main.m */; };
-		B1AB747723C02E9400DD6F5B /* ZYVideoEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AB747623C02E9400DD6F5B /* ZYVideoEditor.m */; };
+		B1AB747723C02E9400DD6F5B /* ZYSpliceVideoEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AB747623C02E9400DD6F5B /* ZYSpliceVideoEditor.m */; };
 		B1DF054923C4394E00A36C2A /* test1.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = B1AB747123C02E5700DD6F5B /* test1.MP4 */; };
 		B1DF054A23C4395200A36C2A /* test2.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = B1AB747423C02E5800DD6F5B /* test2.MP4 */; };
 		B1DF054B23C4395600A36C2A /* test3.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = B1AB747223C02E5700DD6F5B /* test3.MP4 */; };
@@ -35,8 +35,8 @@
 		B1AB747223C02E5700DD6F5B /* test3.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test3.MP4; sourceTree = "<group>"; };
 		B1AB747323C02E5800DD6F5B /* test4.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test4.MP4; sourceTree = "<group>"; };
 		B1AB747423C02E5800DD6F5B /* test2.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test2.MP4; sourceTree = "<group>"; };
-		B1AB747523C02E9400DD6F5B /* ZYVideoEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYVideoEditor.h; sourceTree = "<group>"; };
-		B1AB747623C02E9400DD6F5B /* ZYVideoEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYVideoEditor.m; sourceTree = "<group>"; };
+		B1AB747523C02E9400DD6F5B /* ZYSpliceVideoEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYSpliceVideoEditor.h; sourceTree = "<group>"; };
+		B1AB747623C02E9400DD6F5B /* ZYSpliceVideoEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYSpliceVideoEditor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +75,8 @@
 				B1AB747323C02E5800DD6F5B /* test4.MP4 */,
 				B1AB745823C02E3300DD6F5B /* AppDelegate.h */,
 				B1AB745923C02E3300DD6F5B /* AppDelegate.m */,
-				B1AB747523C02E9400DD6F5B /* ZYVideoEditor.h */,
-				B1AB747623C02E9400DD6F5B /* ZYVideoEditor.m */,
+				B1AB747523C02E9400DD6F5B /* ZYSpliceVideoEditor.h */,
+				B1AB747623C02E9400DD6F5B /* ZYSpliceVideoEditor.m */,
 				B1AB745E23C02E3300DD6F5B /* ViewController.h */,
 				B1AB745F23C02E3300DD6F5B /* ViewController.m */,
 				B1AB746123C02E3300DD6F5B /* Main.storyboard */,
@@ -165,7 +165,7 @@
 				B1AB746023C02E3300DD6F5B /* ViewController.m in Sources */,
 				B1AB745A23C02E3300DD6F5B /* AppDelegate.m in Sources */,
 				B1AB746B23C02E3400DD6F5B /* main.m in Sources */,
-				B1AB747723C02E9400DD6F5B /* ZYVideoEditor.m in Sources */,
+				B1AB747723C02E9400DD6F5B /* ZYSpliceVideoEditor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
