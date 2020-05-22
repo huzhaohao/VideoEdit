@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B103666F2476C18E0089B28C /* ZYMixAudioEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = B103666E2476C18E0089B28C /* ZYMixAudioEditor.m */; };
+		B120485D24781D9200B7260B /* ZYClipeVideoEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = B120485C24781D9200B7260B /* ZYClipeVideoEditor.m */; };
 		B1AB745A23C02E3300DD6F5B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AB745923C02E3300DD6F5B /* AppDelegate.m */; };
 		B1AB746023C02E3300DD6F5B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AB745F23C02E3300DD6F5B /* ViewController.m */; };
 		B1AB746323C02E3300DD6F5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1AB746123C02E3300DD6F5B /* Main.storyboard */; };
@@ -27,6 +28,8 @@
 /* Begin PBXFileReference section */
 		B103666D2476C18E0089B28C /* ZYMixAudioEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYMixAudioEditor.h; sourceTree = "<group>"; };
 		B103666E2476C18E0089B28C /* ZYMixAudioEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYMixAudioEditor.m; sourceTree = "<group>"; };
+		B120485B24781D9200B7260B /* ZYClipeVideoEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYClipeVideoEditor.h; sourceTree = "<group>"; };
+		B120485C24781D9200B7260B /* ZYClipeVideoEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYClipeVideoEditor.m; sourceTree = "<group>"; };
 		B1AB745523C02E3300DD6F5B /* vidotest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vidotest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1AB745823C02E3300DD6F5B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B1AB745923C02E3300DD6F5B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -95,13 +98,15 @@
 			children = (
 				B1B30F9E247697C80063345A /* HZVideoBaseController.h */,
 				B1B30F9F247697C80063345A /* HZVideoBaseController.m */,
-				B1AB747523C02E9400DD6F5B /* ZYSpliceVideoEditor.h */,
-				B1AB747623C02E9400DD6F5B /* ZYSpliceVideoEditor.m */,
 				B1B30F96247687640063345A /* MixmusicViewController.h */,
 				B1B30F94247687640063345A /* MixmusicViewController.m */,
 				B1B30F95247687640063345A /* MixmusicViewController.xib */,
 				B103666D2476C18E0089B28C /* ZYMixAudioEditor.h */,
 				B103666E2476C18E0089B28C /* ZYMixAudioEditor.m */,
+				B1AB747523C02E9400DD6F5B /* ZYSpliceVideoEditor.h */,
+				B1AB747623C02E9400DD6F5B /* ZYSpliceVideoEditor.m */,
+				B120485B24781D9200B7260B /* ZYClipeVideoEditor.h */,
+				B120485C24781D9200B7260B /* ZYClipeVideoEditor.m */,
 			);
 			path = Function;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 				B1B30FA0247697C80063345A /* HZVideoBaseController.m in Sources */,
 				B1AB745A23C02E3300DD6F5B /* AppDelegate.m in Sources */,
 				B1AB746B23C02E3400DD6F5B /* main.m in Sources */,
+				B120485D24781D9200B7260B /* ZYClipeVideoEditor.m in Sources */,
 				B1AB747723C02E9400DD6F5B /* ZYSpliceVideoEditor.m in Sources */,
 				B103666F2476C18E0089B28C /* ZYMixAudioEditor.m in Sources */,
 			);

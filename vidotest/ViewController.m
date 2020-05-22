@@ -175,9 +175,9 @@
 
 #pragma mark ----生成视频名称---
 - (NSString*)getVideoNameBaseCurrentTime {
-   NSDateFormatter*vv_dateFormatter_vv = [[NSDateFormatter  alloc]init];
-   [vv_dateFormatter_vv setDateFormat:@"yyyyMMddHHmmss"];
-  return[[vv_dateFormatter_vv stringFromDate:[NSDate date]]stringByAppendingString:@".MOV"];
+   NSDateFormatter*dateFormatter = [[NSDateFormatter  alloc]init];
+   [dateFormatter setDateFormat:@"yyyyMMddHHmmss"];
+  return[[dateFormatter stringFromDate:[NSDate date]]stringByAppendingString:@".MOV"];
 }
 - (IBAction)didclIkcEC:(id)sender {
 //    [self composeVideo];

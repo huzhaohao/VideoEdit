@@ -234,5 +234,47 @@
     return degress;
 }
 
+- (void)exportWithPath:(NSString *)exportPath{
+          NSLog(@"开始导出");
+          CMTime start =  kCMTimeZero;
+          CMTime duration = self.compostion.duration;
+          CMTimeRange range = CMTimeRangeMake(start, duration);
+          // 配置导出
+          AVAssetExportSession* _assetExport = [[AVAssetExportSession alloc] initWithAsset:self.compostion presetName:AVAssetExportPresetHighestQuality];
+        // 导出视频的临时保存路径
+          unlink([exportPath UTF8String]);
+          NSURL *exportUrl = [NSURL fileURLWithPath:exportPath];
+          // 导出视频的格式 .MOV
+          _assetExport.videoComposition = self.videoComposition;
+          _assetExport.outputFileType = AVFileTypeQuickTimeMovie;
+          _assetExport.outputURL = exportUrl;
+          _assetExport.shouldOptimizeForNetworkUse = YES;
+          _assetExport.timeRange = range;
+        
+          // 导出视频
+          [_assetExport exportAsynchronouslyWithCompletionHandler:
+           ^(void ) {
+               switch ([_assetExport status]) {
+                   case AVAssetExportSessionStatusFailed:
+            
+                       NSLog(@"Export failed: %@", [[_assetExport error] localizedDescription]);
+                       break;
+                   case AVAssetExportSessionStatusCancelled:
+                       
+                       NSLog(@"Export canceled");
+                       break;
+                   default:
+                       NSLog(@"NONE");
+                       dispatch_async(dispatch_get_main_queue(), ^{
+                            if (self.flishCurrentBlock) {
+                                 self.flishCurrentBlock(exportPath);
+                            }
+                       });
+                      
+                       break;
+               }
+           }];
+}
+
 
 @end

@@ -69,4 +69,43 @@
     
     return audioMix;
 }
+
+- (void)exportWithPath:(NSString *)exportPath{
+     NSLog(@"混音开始");
+    //    导出素材
+     AVAssetExportSession *exporter = [[AVAssetExportSession alloc]initWithAsset:self.compostion presetName:AVAssetExportPresetMediumQuality];
+     //    音量控制
+     exporter.audioMix = self.audioMix;
+//     // 导出视频的临时保存路径
+//     NSString *exportPath = [NSTemporaryDirectory() stringByAppendingPathComponent:[self getVideoNameBaseCurrentTime]];
+     unlink([exportPath UTF8String]);
+     NSURL *exportUrl = [NSURL fileURLWithPath:exportPath];
+     //    设置输出路径
+     exporter.outputURL = exportUrl ;
+     exporter.outputFileType = AVFileTypeMPEG4;//指定输出格式
+    // 导出视频
+      [exporter exportAsynchronouslyWithCompletionHandler:
+          ^(void ) {
+              switch ([exporter status]) {
+                  case AVAssetExportSessionStatusFailed:
+                      NSLog(@"Export failed: %@", [[exporter error] localizedDescription]);
+                      break;
+                  case AVAssetExportSessionStatusCancelled:
+                      NSLog(@"Export canceled");
+                      break;
+                  default:
+                      NSLog(@"NONE");
+                      dispatch_async(dispatch_get_main_queue(), ^{
+                             NSLog(@"混音完成");
+                             if (self.flishCurrentBlock) {
+                                 self.flishCurrentBlock(exportPath);
+                             }
+                      });
+                  break;
+              }
+         }];
+}
+
+
+
 @end

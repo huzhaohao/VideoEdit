@@ -33,5 +33,10 @@ typedef enum : NSUInteger {
 @property (nonatomic)ZYVideoRatio   videoRatio;
 
 - (void)buildComposition;
+
+@property (copy ,nonatomic) void(^flishCurrentBlock)(NSString *path);
+- (void)exportWithPath:(NSString *)exportPath;
+
+
 @end
 
