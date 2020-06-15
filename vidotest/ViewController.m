@@ -181,9 +181,36 @@
 }
 - (IBAction)didclIkcEC:(id)sender {
 //    [self composeVideo];
-    MixmusicViewController *vc = [MixmusicViewController new];
-    vc.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self presentViewController:vc animated:YES completion:nil];
+//    MixmusicViewController *vc = [MixmusicViewController new];
+//    vc.modalPresentationStyle = UIModalPresentationFullScreen;
+//    [self presentViewController:vc animated:YES completion:nil];
+    [self payClick];
+}
+
+
+
+-(void)payClick{
+
+     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"请输入支付密码" preferredStyle:UIAlertControllerStyleAlert];
+
+    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+
+    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+        UITextField*userNameTextField = alertController.textFields.firstObject;
+
+        NSLog(@"支付密码：%@",userNameTextField.text);
+
+    }]];
+    [alertController
+     addTextFieldWithConfigurationHandler:^(UITextField*_Nonnull textField) {
+
+            textField.placeholder=@"请输入支付密码";
+
+            textField.secureTextEntry=YES;
+
+    }];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end
